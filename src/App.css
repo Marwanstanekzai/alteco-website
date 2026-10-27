@@ -505,6 +505,53 @@ img {
   line-height: 1.7;
 }
 
+.about-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 45px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-card {
+  flex: 1 1 180px;
+  min-width: 160px;
+  padding: 24px 20px;
+  background-color: #fcfcfc;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: #1764e8;
+  box-shadow: 0 10px 25px rgba(23, 100, 232, 0.08);
+}
+
+.stat-number {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1764e8;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #555;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 
 /* =========================
    SERVICES
