@@ -1351,6 +1351,34 @@ img {
   color: #1769e0;
 }
 
+/* Footer Social Icons */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.social-link:hover {
+  background-color: #1764e8;
+  color: white;
+  transform: translateY(-3px);
+}
+
 
 /* =========================
    COPYRIGHT
