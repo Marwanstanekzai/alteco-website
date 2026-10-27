@@ -16,7 +16,7 @@ function App() {
     <>
       <Header />
 
-      <main>
+      <main id="main-content">
         <Herobanner />
         <OffersSection />
         <AboutSection />
