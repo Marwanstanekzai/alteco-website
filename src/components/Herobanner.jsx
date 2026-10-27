@@ -29,6 +29,16 @@ function Herobanner() {
     setCurrentSlide((prev) => (prev === HERO_SLIDES.length - 1 ? 0 : prev + 1))
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      handlePrev()
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      handleNext()
+    }
+  }
+
   const slide = HERO_SLIDES[currentSlide]
 
   return (
@@ -37,7 +47,15 @@ function Herobanner() {
           HERO BANNER
           ========================= */}
 
-      <section id="home" className="hero" aria-label="Hero Showcase">
+      <section
+        id="home"
+        className="hero"
+        aria-label="Hero Showcase"
+        role="region"
+        aria-roledescription="carousel"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+      >
         {/* Linker pijl */}
         <button
           className="hero-arrow hero-arrow-left"
@@ -49,7 +67,7 @@ function Herobanner() {
         </button>
 
         {/* Inhoud van de Hero */}
-        <div className="hero-content">
+        <div className="hero-content" aria-live="polite">
           {/* Hoofdtitel */}
           <h1>{slide.title}</h1>
 
