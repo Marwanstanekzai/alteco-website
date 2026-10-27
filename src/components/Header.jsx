@@ -4,6 +4,17 @@ import { Mail, Phone } from 'lucide-react'
 function Header() {
   // Houdt bij of het mobiele menu open of dicht is
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Detecteer scrollen voor sticky header schaduw
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Sluit het mobiele menu bij Escape of bij venstervergroting
   useEffect(() => {
@@ -32,7 +43,7 @@ function Header() {
       {/* =========================
           HEADER
           ========================= */}
-      <header>
+      <header className={`site-header ${scrolled ? 'header-scrolled' : ''}`}>
 
         {/* Bovenste donkere contactbalk */}
         <div className="topbar">
