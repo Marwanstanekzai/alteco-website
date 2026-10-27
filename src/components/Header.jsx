@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Mail, Phone } from 'lucide-react'
 
 function Header() {
   // Houdt bij of het mobiele menu open of dicht is
@@ -13,8 +14,14 @@ function Header() {
 
         {/* Bovenste donkere contactbalk */}
         <div className="topbar">
-          <p>info@yoursite@mail.com</p>
-          <p>+77 000 453</p>
+          <div className="topbar-item">
+            <Mail size={14} aria-hidden="true" />
+            <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+          </div>
+          <div className="topbar-item">
+            <Phone size={14} aria-hidden="true" />
+            <a href="tel:+77000453">+77 000 453</a>
+          </div>
         </div>
 
         {/* Hoofdnavigatie */}
