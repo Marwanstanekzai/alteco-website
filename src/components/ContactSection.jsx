@@ -1,6 +1,60 @@
-import { MapPin, Mail, Phone, Clock, Send } from 'lucide-react'
+import { useState } from 'react'
+import { MapPin, Mail, Phone, Clock, Send, CheckCircle2 } from 'lucide-react'
 
 function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+  const [errors, setErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: '' }))
+    }
+  }
+
+  const validate = () => {
+    const newErrors = {}
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
+      newErrors.name = 'Please enter your full name (at least 2 characters).'
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Please provide a valid email address.'
+    }
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Please enter a message subject.'
+    }
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      newErrors.message = 'Please write a message of at least 10 characters.'
+    }
+    return newErrors
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const validationErrors = validate()
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors)
+      return
+    }
+
+    setSubmitting(true)
+    setTimeout(() => {
+      setSubmitting(false)
+      setSubmitted(true)
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      setErrors({})
+    }, 700)
+  }
+
   return (
     <>
       {/* =========================
@@ -62,53 +116,94 @@ function ContactSection() {
 
           {/* Rechter kolom: Contactformulier */}
           <div className="contact-form-container">
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-              <div className="form-row">
+            {submitted ? (
+              <div className="contact-success-card" role="status">
+                <CheckCircle2 size={48} className="success-icon" aria-hidden="true" />
+                <h3>Thank You!</h3>
+                <p>
+                  Your message has been delivered to our consulting team. We will review your request and get back to you within 24 hours.
+                </p>
+                <button
+                  type="button"
+                  className="modal-submit-btn"
+                  onClick={() => setSubmitted(false)}
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="contact-name">Your Name *</label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={errors.name ? 'input-error' : ''}
+                      aria-invalid={Boolean(errors.name)}
+                    />
+                    {errors.name && <span className="field-error">{errors.name}</span>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="contact-email">Your Email *</label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={errors.email ? 'input-error' : ''}
+                      aria-invalid={Boolean(errors.email)}
+                    />
+                    {errors.email && <span className="field-error">{errors.email}</span>}
+                  </div>
+                </div>
+
                 <div className="form-group">
-                  <label htmlFor="contact-name">Your Name</label>
+                  <label htmlFor="contact-subject">Subject *</label>
                   <input
-                    id="contact-name"
+                    id="contact-subject"
+                    name="subject"
                     type="text"
-                    placeholder="John Doe"
-                    required
+                    placeholder="Project Inquiry / Consultation"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={errors.subject ? 'input-error' : ''}
+                    aria-invalid={Boolean(errors.subject)}
                   />
+                  {errors.subject && <span className="field-error">{errors.subject}</span>}
                 </div>
+
                 <div className="form-group">
-                  <label htmlFor="contact-email">Your Email</label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    placeholder="john@example.com"
-                    required
+                  <label htmlFor="contact-message">Message *</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us about your project requirements..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    className={errors.message ? 'input-error' : ''}
+                    aria-invalid={Boolean(errors.message)}
                   />
+                  {errors.message && <span className="field-error">{errors.message}</span>}
                 </div>
-              </div>
 
-              <div className="form-group">
-                <label htmlFor="contact-subject">Subject</label>
-                <input
-                  id="contact-subject"
-                  type="text"
-                  placeholder="Project Inquiry / Consultation"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="contact-message">Message</label>
-                <textarea
-                  id="contact-message"
-                  rows={4}
-                  placeholder="Tell us about your project requirements..."
-                  required
-                />
-              </div>
-
-              <button type="submit" className="contact-submit-btn">
-                <span>SEND MESSAGE</span>
-                <Send size={16} aria-hidden="true" />
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="contact-submit-btn"
+                  disabled={submitting}
+                >
+                  <span>{submitting ? 'SENDING...' : 'SEND MESSAGE'}</span>
+                  <Send size={16} aria-hidden="true" />
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
