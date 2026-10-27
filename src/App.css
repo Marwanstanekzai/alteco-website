@@ -1920,6 +1920,74 @@ img {
 }
 
 /* =========================
+   COMPACT MOBILE (<= 480px)
+   ========================= */
+
+@media (max-width: 480px) {
+  .topbar {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    padding: 8px 15px;
+  }
+
+  .hero {
+    min-height: 480px;
+    padding: 30px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 21px;
+    padding: 8px 12px;
+  }
+
+  .hero-content p {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+    padding: 11px 20px;
+  }
+
+  .hero-arrow {
+    display: none;
+  }
+
+  .offers-content,
+  .about,
+  .services,
+  .testimonials,
+  .faq-section,
+  .contact-section {
+    padding: 45px 15px;
+  }
+
+  .contact-form-container {
+    padding: 20px 14px;
+  }
+
+  .modal-box {
+    padding: 22px 16px;
+    width: 95%;
+  }
+
+  .back-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* =========================
    BACK TO TOP
    ========================= */
 
