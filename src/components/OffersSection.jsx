@@ -1,4 +1,5 @@
 import image2 from '../assets/image2.jpg'
+import { Code, Sparkles } from 'lucide-react'
 
 function OffersSection() {
   return (
@@ -12,7 +13,7 @@ function OffersSection() {
         <div className="offers-image">
           <img
             src={image2}
-            alt="Business professional"
+            alt="Business professional collaborating at desk"
           />
         </div>
 
@@ -38,6 +39,9 @@ function OffersSection() {
 
             {/* Eerste aanbieding */}
             <div className="offer-item">
+              <div className="offer-item-icon">
+                <Code size={22} aria-hidden="true" />
+              </div>
               <h3>Clean Modern Code</h3>
 
               <p>
@@ -52,6 +56,9 @@ function OffersSection() {
 
             {/* Tweede aanbieding */}
             <div className="offer-item">
+              <div className="offer-item-icon">
+                <Sparkles size={22} aria-hidden="true" />
+              </div>
               <h3>Design To Brag About</h3>
 
               <p>

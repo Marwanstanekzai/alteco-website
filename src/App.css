@@ -382,6 +382,32 @@ img {
   margin-top: 40px;
 }
 
+.offer-item {
+  transition: transform 0.25s ease;
+}
+
+.offer-item:hover {
+  transform: translateY(-4px);
+}
+
+.offer-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background-color: rgba(23, 100, 232, 0.1);
+  color: #1764e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.offer-item:hover .offer-item-icon {
+  background-color: #1764e8;
+  color: white;
+}
+
 .offer-item h3 {
   font-size: 18px;
 
@@ -397,16 +423,19 @@ img {
 }
 
 .offer-item a {
+  display: inline-block;
   color: #333;
 
   font-size: 12px;
   font-weight: bold;
 
   text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .offer-item a:hover {
   color: #1764e8;
+  transform: translateX(4px);
 }
 
 
