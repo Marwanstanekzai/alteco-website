@@ -1,9 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Mail, Phone } from 'lucide-react'
 
 function Header() {
   // Houdt bij of het mobiele menu open of dicht is
   const [menuOpen, setMenuOpen] = useState(false)
+
+  // Sluit het mobiele menu bij Escape of bij venstervergroting
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+      }
+    }
+
+    const handleResize = () => {
+      if (window.innerWidth > 768 && menuOpen) {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [menuOpen])
 
   return (
     <>
@@ -25,7 +47,7 @@ function Header() {
         </div>
 
         {/* Hoofdnavigatie */}
-        <nav className="main-nav">
+        <nav className="main-nav" aria-label="Main Navigation">
 
           {/* Logo */}
           <h2>ALTECO</h2>
@@ -33,13 +55,17 @@ function Header() {
           {/* Hamburger knop voor mobiel */}
           <button
             className="menu-button"
+            type="button"
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? '✕' : '☰'}
+            <span aria-hidden="true">{menuOpen ? '✕' : '☰'}</span>
           </button>
 
           {/* Menu-items */}
-          <ul className={menuOpen ? 'menu-open' : ''}>
+          <ul id="primary-navigation" className={menuOpen ? 'menu-open' : ''}>
             <li>
               <a href="#home" onClick={() => setMenuOpen(false)}>HOME</a>
             </li>
