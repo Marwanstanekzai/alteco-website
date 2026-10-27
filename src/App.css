@@ -666,6 +666,136 @@ img {
 
 
 /* =========================
+   MODALS
+   ========================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-box {
+  background-color: white;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: #111;
+}
+
+.modal-tabs {
+  display: flex;
+  gap: 15px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
+
+.modal-tabs button {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #888;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.modal-tabs button.active {
+  color: #1764e8;
+  border-bottom-color: #1764e8;
+}
+
+.modal-box h3 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  color: #111;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-group input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #1764e8;
+}
+
+.modal-submit-btn {
+  width: 100%;
+  background-color: #1764e8;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.modal-submit-btn:hover {
+  background-color: #0e4fba;
+}
+
+.modal-success-msg {
+  background-color: #e6f4ea;
+  color: #137333;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+/* =========================
    TABLET
    ========================= */
 
