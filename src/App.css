@@ -795,6 +795,102 @@ img {
 
 
 /* =========================
+   TESTIMONIALS
+   ========================= */
+
+.testimonials {
+  width: 100%;
+  padding: 80px 5%;
+  background-color: #f9fafb;
+}
+
+.testimonials-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.testimonials-header span {
+  color: #1769e0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.testimonials-header h2 {
+  font-size: 36px;
+  margin: 15px 0;
+  color: #111;
+}
+
+.testimonials-header p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: white;
+  border: 1px solid #eef0f4;
+  border-radius: 8px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.07);
+}
+
+.testimonial-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quote-icon {
+  color: #1764e8;
+  opacity: 0.85;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.testimonial-quote {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 24px;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testimonial-author h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #111;
+}
+
+.testimonial-author span {
+  font-size: 13px;
+  color: #777;
+}
+
+
+/* =========================
    FOOTER
    ========================= */
 
@@ -1073,6 +1169,11 @@ img {
   /* 4 kolommen worden 2 kolommen */
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
   }
 
   /* Offers wordt onder elkaar */
