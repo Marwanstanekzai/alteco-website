@@ -9,6 +9,7 @@ import TestimonialsSection from './components/TestimonialsSection'
 import FAQSection from './components/FAQSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       </main>
 
       <Footer />
+      <BackToTop />
     </>
   )
 }
