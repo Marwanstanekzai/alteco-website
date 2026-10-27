@@ -658,6 +658,17 @@ img {
 
 .service-item {
   text-align: center;
+  padding: 24px 16px;
+  border-radius: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 
@@ -677,6 +688,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.service-item:hover .service-icon {
+  transform: scale(1.08);
+  background-color: #0e4fba;
 }
 
 
@@ -708,6 +725,72 @@ img {
   line-height: 1.7;
 
   font-size: 14px;
+  flex-grow: 1;
+}
+
+.service-explore-btn {
+  margin-top: 15px;
+  background: transparent;
+  border: none;
+  color: #1769e0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.service-explore-btn:hover {
+  color: #0e4fba;
+  transform: translateX(4px);
+}
+
+.service-modal-box {
+  max-width: 520px;
+}
+
+.service-modal-text {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 10px 0 20px;
+}
+
+.service-modal-highlights {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.service-modal-highlights h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.service-modal-highlights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-modal-highlights li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #444;
+}
+
+.highlight-check {
+  color: #1764e8;
+  flex-shrink: 0;
 }
 
 
